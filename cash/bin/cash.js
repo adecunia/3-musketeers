@@ -1,5 +1,5 @@
 'use strict';
-
+//Loading all librairies
 const got = require('got');
 const money = require('money');
 const chalk = require('chalk');
@@ -8,9 +8,10 @@ const currencies = require('../lib/currencies.json');
 
 const {API} = require('./constants');
 
+//async task : waiting the end of the recuperation of the data to close the data
 const cash = async command => {
 	const {amount} = command;
-	const from = command.from.toUpperCase();
+	const from = command.from.toUpperCase();	//putting in majuscule
 	const to = command.to.filter(item => item !== from).map(item => item.toUpperCase());
 
 	console.log();
@@ -31,6 +32,7 @@ const cash = async command => {
 		money.base = response.body.base;
 		money.rates = response.body.rates;
 
+		//converting the values with APi based values
 		to.forEach(item => {
 			if (currencies[item]) {
 				loading.succeed(`${chalk.green(money.convert(amount, {from, to: item}).toFixed(3))} ${`(${item})`} ${currencies[item]}`);

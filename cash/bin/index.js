@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 'use strict';
-
+//loading the librairies
 const Conf = require('conf');
 const meow = require('meow');
 const chalk = require('chalk');
@@ -11,7 +11,7 @@ const config = new Conf();
 const argv = process.argv.slice(2);
 
 const {DEFAULT_TO_CURRENCIES} = require('./constants');
-
+//Description of the librairies
 const cli = meow(`
 	Usage
 		$ cash <amount> <from> <to>
